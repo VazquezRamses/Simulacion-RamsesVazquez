@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwvns1oox2gwm"]
+
+[ext_resource type="Script" path="res://Global.gd" id="1_bnvy6"]
+[ext_resource type="AudioStream" uid="uid://cf4eo1gd7sp7d" path="res://Assets/Sonido/audio effects retro/statistcs (progress on your game)/Pickup Coin3.wav" id="2_bpgsl"]
+[ext_resource type="AudioStream" uid="uid://bcxirey47033s" path="res://Assets/Sonido/audio effects retro/statistcs (progress on your game)/boost.wav" id="3_anejf"]
+[ext_resource type="AudioStream" uid="uid://c71msoijdu6eo" path="res://Assets/Sonido/audio effects retro/statistcs (progress on your game)/score.wav" id="4_0phif"]
+[ext_resource type="Script" path="res://Scripts/Time.gd" id="4_lmbks"]
+[ext_resource type="AudioStream" uid="uid://cke5devjxs855" path="res://Assets/Sonido/sea_theme_2.wav" id="6_e2kls"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_bnvy6")
+
+[node name="MonedaSonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bpgsl")
+volume_db = -21.063
+
+[node name="MuerteSonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_anejf")
+volume_db = -24.574
+
+[node name="PowerUP" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0phif")
+volume_db = -30.717
+
+[node name="Time" type="Timer" parent="."]
+autostart = true
+script = ExtResource("4_lmbks")
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e2kls")
+volume_db = -13.194
+autoplay = true
+
+[connection signal="timeout" from="Time" to="." method="_on_time_timeout"]
+[connection signal="timeout" from="Time" to="Time" method="_on_timeout"]
